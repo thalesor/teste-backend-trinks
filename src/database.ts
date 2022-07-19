@@ -1,7 +1,5 @@
-const clientes = [];
-const processos = [];
+import { IClienteData } from "./services/clientesService";
+import { IProcessoData } from "./services/processosService";
 
-export default {
-    clientes,
-    processos
-}
+export const clientes: IClienteData[] = [];
+export const processos: IProcessoData[] = [];
