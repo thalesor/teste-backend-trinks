@@ -5,5 +5,7 @@ const processosRouter = Router();
 
 processosRouter.post("/", processosController.insert);
 processosRouter.get("/", processosController.get);
+processosRouter.get("/total", processosController.getTotal);
+processosRouter.get("/mediatotal", processosController.getMediaTotal);
 
 export default processosRouter;

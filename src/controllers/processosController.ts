@@ -13,7 +13,21 @@ function get(req: Request, res: Response) {
   res.send(processos);
 }
 
+function getTotal(req: Request, res: Response) {
+  const { status } = req.query;
+  const somaTotal = processosService.getTotalFromStatus(status as string);
+  res.send(somaTotal);
+}
+
+function getMediaTotal(req: Request, res: Response) {
+  const { idEmpresa, estado } = req.query;
+  const mediaTotal = processosService.getMediaTotalEmpresaEstado(+idEmpresa, estado as string);
+  res.send(mediaTotal);
+}
+
 export const processosController = {
  insert,
- get
+ get,
+ getMediaTotal,
+ getTotal
 };
