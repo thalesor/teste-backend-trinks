@@ -1,4 +1,4 @@
-import  { processosRepository }  from "../repositories/processosRepository";
+import  { processosRepository }  from "../repositories/processosRepository.js";
 import { conflictError } from "../utils/errorUtils.js";
 
 export interface IProcessoData {

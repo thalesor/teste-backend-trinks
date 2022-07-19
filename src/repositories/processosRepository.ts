@@ -1,5 +1,5 @@
-import { processos } from "../database";
-import { IProcessoData } from "../services/processosService";
+import { processos } from "../database.js";
+import { IProcessoData } from "../services/processosService.js";
 
 async function create(CreateProcessoData: IProcessoData) {
   processos.push(CreateProcessoData);

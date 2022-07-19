@@ -1,4 +1,4 @@
-import  { clientesRepository }  from "../repositories/clientesRepository";
+import  { clientesRepository }  from "../repositories/clientesRepository.js";
 import { conflictError } from "../utils/errorUtils.js";
 
 export interface IClienteData {

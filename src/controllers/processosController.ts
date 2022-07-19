@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { processosService } from "../services/processosService";
+import { processosService } from "../services/processosService.js";
 
 function insert(req: Request, res: Response) {
 

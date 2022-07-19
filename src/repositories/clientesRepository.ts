@@ -1,5 +1,5 @@
-import { clientes } from "../database";
-import { IClienteData } from "../services/clientesService";
+import { clientes } from "../database.js";
+import { IClienteData } from "../services/clientesService.js";
 
 async function create(CreateClientesData: IClienteData) {
   clientes.push(CreateClientesData);
