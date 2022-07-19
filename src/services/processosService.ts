@@ -67,7 +67,7 @@ function getProcessesByDate(date: Date)
 function getProcessesBySlug(slug: string)
 {
   const processos = processosRepository.findAll();
-  return processos.filter(processo => processo.numero.indexOf(slug) >= 1);
+  return processos.filter(processo => processo.numero.indexOf(slug) !== -1);
 }
 
 function getSoma(processos: IProcessoData[])

@@ -14,31 +14,31 @@ describe("Testes unitários da service dos processos", () => {
         jest.clearAllMocks()
     });
 
-    it('deveria retornar a soma de R$ 1.087.000,00 ao buscar os processos ativos', async () => {
+    it('deveria retornar a soma de R$ 1.087.000,00 ao buscar os processos ativos', () => {
         
         const soma = processosService.getTotalFromStatus('ativo');
-        expect(soma).toBe("R$ 1.087.000,00");
+        expect(soma).toEqual("R$ 1.087.000,00");
     });
 
-    it('deveria retornar a soma de R$ 110.000,00 ao buscar os processos da Empresa A, no estado do Rio de Jan eiro', async () => {
+    it('deveria retornar a soma de R$ 110.000,00 ao buscar os processos da Empresa A, no estado do Rio de Janeiro', () => {
         
         const soma = processosService.getMediaTotalEmpresaEstado(1, "Rio de Janeiro");
-        expect(soma).toBe("R$ 110.000,00");
+        expect(soma.toString()).toEqual("R$ 110.000,00");
     });
 
-    it('deveria retornar no máximo dois processos quando busca processos com valor acima de 100.000 reais', async () => {
+    it('deveria retornar no máximo dois processos quando busca processos com valor acima de 100.000 reais', () => {
         
         const processos = processosService.getTotalGreaterThan(100000);
         expect(processos.length).toEqual(2);
     });
 
-    it('deveria retornar lista contendo processo dos estados dos clientes', async () => {
+    it('deveria retornar lista contendo processo dos estados dos clientes', () => {
         
         const clientes = clientesRepository.findAll();
         const processosA = processosService.getByEstado(clientes[0].estado);
         const processosB = processosService.getByEstado(clientes[1].estado);
         const listProcessos = processosA.concat(processosB);
-        expect(listProcessos).toBe([
+        expect(listProcessos).toContain([
             {
                 status: "ativo",
                 numero: "00001CIVELRJ",
@@ -77,7 +77,7 @@ describe("Testes unitários da service dos processos", () => {
     it('deveria retornar uma lista com os processos 00003TRABMG e 00010TRABAM quando pesquisa com o trecho TRAB', async () => {
         
         const processos = processosService.getProcessesBySlug('TRAB');
-        expect(processos).toEqual([
+        expect(processos).toContain([
             {
                 status: "inativo",
                 numero: "00003TRABMG",
