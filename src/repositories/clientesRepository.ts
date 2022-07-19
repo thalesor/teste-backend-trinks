@@ -1,4 +1,4 @@
-import { clientes } from "../../database/database.js";
+import { clientes, truncateClientes } from "../../database/database.js";
 import { IClienteData } from "../services/clientesService.js";
 
 function create(CreateClientesData: IClienteData) {
@@ -25,11 +25,17 @@ function findByNome(nome: String): IClienteData {
     return clientes.find(cliente => cliente.nome === nome);
   }
 
+function truncate()
+{
+  truncateClientes();
+}
+
 
 export const clientesRepository = {
   create,
   createMany,
   findAll,
   find,
-  findByNome
+  findByNome,
+  truncate
 };
