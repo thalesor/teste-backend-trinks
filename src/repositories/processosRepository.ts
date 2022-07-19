@@ -1,16 +1,20 @@
-import { processos } from "../database.js";
+import { processos } from "../../database/database.js";
 import { IProcessoData } from "../services/processosService.js";
 
-async function create(CreateProcessoData: IProcessoData) {
-  processos.push(CreateProcessoData);
+function create(createProcessoData: IProcessoData) {
+  processos.push(createProcessoData);
+}
+
+function createMany(createProcessoData: IProcessoData[]) {
+  
+  for(const processo of createProcessoData)
+  {
+    processos.push(processo);
+  }
 }
 
 function findAll(): IProcessoData[] {
   return processos;
-}
-
-function find(id: number): IProcessoData {
-  return processos.find(processo => processo.id === id);
 }
 
 function findByNumero(numero: String): IProcessoData {
@@ -20,7 +24,7 @@ function findByNumero(numero: String): IProcessoData {
 
 export const processosRepository = {
   create,
+  createMany,
   findAll,
-  find,
   findByNumero
 };

@@ -2,21 +2,21 @@ import  { clientesRepository }  from "../repositories/clientesRepository.js";
 import { conflictError } from "../utils/errorUtils.js";
 
 export interface IClienteData {
-    id: number;
+    id: Number;
     cnpj: String;
     nome: String;
     estado: String;
 }
 
-async function insert(createClienteData: IClienteData) {
-  const existingCliente = await clientesRepository.findByNome(
+function insert(createClienteData: IClienteData) {
+  const existingCliente = clientesRepository.findByNome(
     createClienteData.nome
   );
 
   if (existingCliente)
     throw conflictError("O nome dos clientes deve ser único");
 
-  await clientesRepository.create(createClienteData);
+  clientesRepository.create(createClienteData);
 }
 
 function get() {

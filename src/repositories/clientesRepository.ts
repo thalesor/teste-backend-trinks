@@ -1,8 +1,16 @@
-import { clientes } from "../database.js";
+import { clientes } from "../../database/database.js";
 import { IClienteData } from "../services/clientesService.js";
 
-async function create(CreateClientesData: IClienteData) {
+function create(CreateClientesData: IClienteData) {
   clientes.push(CreateClientesData);
+}
+
+function createMany(CreateClientesData: IClienteData[]) {
+  
+  for(const cliente of CreateClientesData)
+  {
+    clientes.push(cliente);
+  }
 }
 
 function findAll(): IClienteData[] {
@@ -20,6 +28,7 @@ function findByNome(nome: String): IClienteData {
 
 export const clientesRepository = {
   create,
+  createMany,
   findAll,
   find,
   findByNome
